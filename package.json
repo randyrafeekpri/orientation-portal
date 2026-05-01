@@ -1,0 +1,12 @@
+{
+  "name": "orientation-success-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Orientation dashboard, checklist, certificate, and Telegram notification portal.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orientation Success Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">RVP Command Center</p>
+      <h1>Orientation Success Portal</h1>
+    </div>
+    <nav class="tabs" aria-label="Portal views">
+      <button class="tab is-active" data-view="dashboard">Dashboard</button>
+      <button class="tab" data-view="associate">Associate Path</button>
+      <button class="tab" data-view="messages">Messages</button>
+      <button class="tab" data-view="settings">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dashboard" class="view is-active">
+      <div class="metrics" id="metrics"></div>
+      <section class="band two-col">
+        <div>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">New Launch</p>
+              <h2>Add Associate</h2>
+            </div>
+          </div>
+          <form id="addUserForm" class="grid-form">
+            <label>Name<input name="name" required placeholder="Associate name"></label>
+            <label>Email<input name="email" type="email" placeholder="name@email.com"></label>
+            <label>Phone<input name="phone" placeholder="(555) 555-5555"></label>
+            <label>Associate Telegram Chat ID<input name="telegramChatId" placeholder="Optional"></label>
+            <label>Recruiter<input name="recruiterName" placeholder="Recruiter name"></label>
+            <label>Recruiter Chat ID<input name="recruiterTelegramChatId" placeholder="Telegram chat ID"></label>
+            <label>Field Trainer<input name="fieldTrainerName" placeholder="Trainer name"></label>
+            <label>Trainer Chat ID<input name="fieldTrainerTelegramChatId" placeholder="Telegram chat ID"></label>
+            <label class="full">Why they said yes<textarea name="why" placeholder="Document their reason for starting."></textarea></label>
+            <button class="primary full" type="submit">Create Dashboard</button>
+          </form>
+        </div>
+        <div>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Active People</p>
+              <h2>Associate Dashboards</h2>
+            </div>
+          </div>
+          <div id="userList" class="user-list"></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="associate" class="view">
+      <div class="associate-shell">
+        <aside class="side-panel">
+          <label>Current Associate<select id="userSelect"></select></label>
+          <div id="associateSummary"></div>
+          <button id="printCertificate" class="secondary" type="button">Generate Certificate</button>
+        </aside>
+        <section id="associateEditor" class="workspace-panel"></section>
+      </div>
+    </section>
+
+    <section id="messages" class="view">
+      <section class="band two-col">
+        <div>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Daily Accountability</p>
+              <h2>Digest Preview</h2>
+            </div>
+            <button id="sendDigest" class="primary" type="button">Send Digest Now</button>
+          </div>
+          <pre id="digestPreview" class="digest"></pre>
+        </div>
+        <div>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Telegram</p>
+              <h2>Direct Message</h2>
+            </div>
+          </div>
+          <form id="messageForm" class="grid-form">
+            <label class="full">Chat ID<input name="chatId" required placeholder="Telegram chat ID"></label>
+            <label class="full">Message<textarea name="text" required placeholder="Message to send"></textarea></label>
+            <button class="primary full" type="submit">Send Telegram Message</button>
+          </form>
+          <div id="messageLog" class="message-log"></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="settings" class="view">
+      <section class="band two-col">
+        <div>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Team Setup</p>
+              <h2>RVP Settings</h2>
+            </div>
+          </div>
+          <form id="settingsForm" class="grid-form">
+            <label>RVP Name<input name="rvpName" placeholder="Your name"></label>
+            <label>RVP Chat ID<input name="rvpTelegramChatId" placeholder="Telegram chat ID"></label>
+            <label>Daily Digest Time<input name="dailyDigestTime" type="time"></label>
+            <label>Group Invite Link<input name="telegramGroupLink" placeholder="https://t.me/..."></label>
+            <button class="primary full" type="submit">Save Settings</button>
+          </form>
+        </div>
+        <div class="setup-card">
+          <p class="eyebrow">Bot Setup</p>
+          <h2>Connect Telegram</h2>
+          <ol>
+            <li>Create a bot with BotFather and copy the token.</li>
+            <li>Copy <code>.env.example</code> to <code>.env</code> and set <code>TELEGRAM_BOT_TOKEN</code>.</li>
+            <li>Add your bot to the Telegram group or start a chat with it.</li>
+            <li>Use a chat ID lookup message or Telegram API getUpdates to capture each chat ID.</li>
+            <li>Restart the server after editing <code>.env</code>.</li>
+          </ol>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section id="certificate" class="certificate" aria-hidden="true"></section>
+
+  <script src="/app.js"></script>
+</body>
+</html>

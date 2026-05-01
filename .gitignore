@@ -1,0 +1,9 @@
+.env
+node_modules/
+npm-debug.log*
+server.log
+server.out.log
+server.err.log
+
+# Local app data. Use a hosted database or persistent disk in production.
+data/
