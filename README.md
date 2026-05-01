@@ -53,14 +53,13 @@ Recommended health check:
 Set these environment variables online:
 
 ```text
-PORT
 DATA_DIR
 TELEGRAM_BOT_TOKEN
 RVP_CHAT_ID
 DAILY_DIGEST_TIME
 ```
 
-Do not upload `.env` to GitHub. Put production secrets directly in your host's environment variable settings.
+Do not set `PORT` yourself on Render. Render provides it automatically. Do not upload `.env` to GitHub. Put production secrets directly in your host's environment variable settings.
 
 ## Telegram setup
 
